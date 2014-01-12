@@ -1,5 +1,3 @@
-import org.omg.CORBA.PRIVATE_MEMBER;
-
 /**
  * Sorting an array using bubble sort, selection sort, insertion sort, quicksort and merge sort
  * <p/>
