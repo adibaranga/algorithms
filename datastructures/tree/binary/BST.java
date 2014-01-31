@@ -111,6 +111,64 @@ public class BST {
         }
 
         //found node to delete: current
+        if (current.left == null && current.right == null) {
+            // no children, delete leaf
+            if (current == root) {
+                root = null;
+            } else if (isLeftChild) {
+                parent.left = null;
+            } else {
+                parent.right = null;
+            }
+        } else if (current.right == null) {
+            // has only left child
+            if (current == root) {
+                root = current.left;
+            } else if (isLeftChild) {
+                parent.left = current.left;
+            } else {
+                parent.right = current.left;
+            }
+        } else if (current.left == null) {
+            // has only right child
+            if (current == root) {
+                root = current.right;
+            } else if (isLeftChild) {
+                parent.left = current.right;
+            } else {
+                parent.right = current.right;
+            }
+        } else {
+            // has left and right children
+            Node successor = getSuccessor(current);
+            if (current == root) {
+                root = successor;
+            } else if (isLeftChild) {
+                parent.left = successor;
+            } else {
+                parent.right = successor;
+            }
+            successor.left = current.left;
+        }
+        return true;
+    }
+
+    private Node getSuccessor(Node delNode) {
+        Node parent = delNode;
+
+        Node successor = delNode;
+        Node current = delNode.right;
+        while (current != null) {
+            parent = successor;
+            successor = current;
+            current = current.left;
+        }
+
+        if (successor != delNode.right) {
+            parent.left = successor.right;
+            successor.right = delNode.right;
+        }
+        return successor;
     }
 
     public void traverseInOrder() {

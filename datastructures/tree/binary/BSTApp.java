@@ -62,5 +62,21 @@ public class BSTApp {
 
         bst.traverseInOrder();
 
+        boolean deleted = bst.delete(34);
+        System.out.println("Deleted node 34: " + deleted);
+        bst.traverseInOrder();
+
+        deleted = bst.delete(65);
+        System.out.println("Deleted node 65: " + deleted);
+        bst.traverseInOrder();
+
+        deleted = bst.delete(75);
+        System.out.println("Deleted node 75: " + deleted);
+        bst.traverseInOrder();
+
+        deleted = bst.delete(25);
+        System.out.println("Deleted node 25: " + deleted);
+        bst.traverseInOrder();
+
     }
 }
